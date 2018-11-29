@@ -10,6 +10,9 @@ with open('credentials.json') as f:
 
 
 def watson(text):
+    '''
+    Calls Watson Tone Analyzer
+    '''
     url = 'https://gateway.watsonplatform.net/tone-analyzer/api/v3/tone'
     headers = {
         'content-type': 'application/json'
@@ -27,6 +30,9 @@ def watson(text):
 
 
 def main():
+    '''
+    Calls newsapi for most popular US stories
+    '''
     url = 'https://newsapi.org/v2/top-headlines?country=us&sortBy=popularity&apiKey={}'.format(news_key)
     resp = requests.get(url, timeout=5).json()
     top_headline = resp['articles'][0]['title']
